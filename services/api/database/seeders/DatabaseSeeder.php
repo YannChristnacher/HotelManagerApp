@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Hotel;
+use App\Models\Picture;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $hotels = Hotel::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $hotels->each(function (Hotel $hotel) {
+            $rand = rand(1, 4);
+            for ($i = 0 ; $i < $rand ; $i++ ) {
+                Picture::factory()
+                    ->forModel($hotel)
+                    ->forPosition($i)
+                    ->create();
+            }
+        });
     }
 }
