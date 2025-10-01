@@ -54,8 +54,7 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY', 'minio123'),
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'bucket' => env('AWS_BUCKET', 'photos'),
-            'url' => env('AWS_URL', 'http://localhost:9000/photos'),
-            'endpoint' => env('AWS_ENDPOINT', 'http://minio:9000'),
+            'endpoint' => env('AWS_ENDPOINT', 'http://localhost:9000'),
             'use_path_style_endpoint' => true,
         ],
 
