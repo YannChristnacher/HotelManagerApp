@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\HotelAllAction;
+use App\Http\Actions\HotelCreateAction;
 use App\Http\Actions\HotelDeleteAction;
 use App\Http\Actions\HotelDetailAction;
+use App\Http\Actions\HotelUpdateAction;
+use App\Http\Requests\CreateHotelRequest;
+use App\Http\Requests\UpdateHotelRequest;
 use App\Http\Resources\HotelDetailResource;
 use App\Http\Resources\HotelPreviewResource;
 use App\Http\Responses\PaginateResponse;
@@ -24,16 +28,25 @@ class HotelController extends Controller
            ->setPaginator($result->getPaginator())
            ->setData($result->getHotelsResource());
     }
-    public function create(){
-
+    public function create(CreateHotelRequest $request){
+        $response = new SingleResponse();
+        return $response
+            ->setMessage("Création d'un hotel")
+            ->setData(HotelCreateAction::execute($request->toDto()));
     }
-    public function read(Hotel $hotel){
+    public function read(?Hotel $hotel = null){
+
         $response = new SingleResponse();
         return $response
             ->setMessage("Détail de l'hotel : " . $hotel->id)
             ->setData(HotelDetailAction::execute($hotel));
     }
-    public function update(Hotel $hotel){}
+    public function update(Hotel $hotel, UpdateHotelRequest $request){
+        $response = new SingleResponse();
+        return $response
+            ->setMessage("Mis à jour de l'hotel : " . $hotel->id)
+            ->setData(HotelUpdateAction::execute($hotel, $request->toDto()));
+    }
     public function delete(Hotel $hotel){
         $response = new SingleResponse();
         return $response
