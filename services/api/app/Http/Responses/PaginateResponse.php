@@ -34,6 +34,8 @@ class PaginateResponse extends BaseResponse
             ],
             'request' => request()->query()
 
-        ]);
+        ],
+            status: $this->code
+        );
     }
 }

@@ -21,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             $response = new SingleResponse();
             return $response
                 ->setStatus(false)
+                ->setCode(404)
                 ->setData($exception->getMessage())
                 ->setMessage("Le model n'a pas été trouvé");
         });
@@ -29,6 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
             $response = new SingleResponse();
             return $response
                 ->setStatus(false)
+                ->setCode(500)
                 ->setData($exception->errors())
                 ->setMessage("La Validation du formulaire à échoué");
         });
@@ -37,6 +39,7 @@ return Application::configure(basePath: dirname(__DIR__))
             $response = new SingleResponse();
             return $response
                 ->setStatus(false)
+                ->setCode(500)
                 ->setData([
                     "message" => $exception->getMessage(),
                     "trace" =>$exception->getTrace()
