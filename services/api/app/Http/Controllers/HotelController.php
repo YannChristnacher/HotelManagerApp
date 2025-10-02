@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Actions\HotelAllAction;
+use App\Http\Actions\HotelDeleteAction;
 use App\Http\Actions\HotelDetailAction;
 use App\Http\Resources\HotelDetailResource;
 use App\Http\Resources\HotelPreviewResource;
@@ -33,5 +34,10 @@ class HotelController extends Controller
             ->setData(HotelDetailAction::execute($hotel));
     }
     public function update(Hotel $hotel){}
-    public function delete(Hotel $hotel){}
+    public function delete(Hotel $hotel){
+        $response = new SingleResponse();
+        return $response
+            ->setMessage("Suppresion de l'hotel : " . $hotel->id)
+            ->setData(HotelDeleteAction::execute($hotel));
+    }
 }
