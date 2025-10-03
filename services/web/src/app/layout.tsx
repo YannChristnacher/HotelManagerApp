@@ -6,6 +6,8 @@ import Header from "@/components/layout/Header";
 import {Container, Flex} from "@chakra-ui/react";
 import { Toaster } from "@/components/ui/toaster"
 import React from "react";
+import ScrollTopButton from "@/components/ui/ScrollTopButton";
+
 const montserrat = Montserrat({
     subsets: ["latin"],
     weight: ["300", "500", "700"]
@@ -25,10 +27,11 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body className={montserrat.className}>
         <Provider>
+            <ScrollTopButton/>
             <Toaster />
             <Header/>
             <Flex mt={6} justify="center" className="h-100">
-                <Container maxW="6xl" className="h-100" bg="white" py="12" px="6">
+                <Container maxW="6xl" className="h-100" py="12" px="6">
                     {children}
                 </Container>
             </Flex>

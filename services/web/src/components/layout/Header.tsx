@@ -1,16 +1,15 @@
 import React from "react";
-import styles from "@/css/layout.module.scss"
 import AppName from "@/components/layout/AppName";
 import MenuItem from "@/components/layout/MenuItem";
-import { Container, Flex, Spacer } from "@chakra-ui/react"
+import {Box, Container, Flex, Spacer} from "@chakra-ui/react"
 
 export default function Header()
 {
     return (
-        <div className={styles.header}>
-            <Flex justify="center" className="h-100">
-                <Container maxW="6xl" className="h-100">
-                    <Flex className="h-100">
+        <Box background="white" height="100px">
+            <Flex justify="center" height="100%">
+                <Container maxW="6xl" height="100%">
+                    <Flex height="100%">
                         <AppName/>
                         <Spacer/>
                         <MenuItem label="Mes logements"/>
@@ -18,7 +17,6 @@ export default function Header()
                     </Flex>
                 </Container>
             </Flex>
-
-        </div>
+        </Box>
     )
 }

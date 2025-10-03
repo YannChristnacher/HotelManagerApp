@@ -6,7 +6,7 @@
 
 .appName {
   font-size: 24px;
-  color: #6d94c5;
+  text-transform: uppercase;
   width: 250px;
   height: 100%;
   display: flex;
@@ -33,7 +33,7 @@
     right: 0;
     bottom: 0;
     height: 3px;
-    background-color: #6d94c5;
+    background-color: black;
     display: none;
     transition: all 0.3s;
   }
