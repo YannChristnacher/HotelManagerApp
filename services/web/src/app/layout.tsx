@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+import { Montserrat } from "next/font/google";
+import "../css/globals.css";
+import { Provider } from "@/components/ui/provider"
+import Header from "@/components/layout/Header";
+import {Container, Flex, Grid} from "@chakra-ui/react";
+import PreviewHotelCard from "@/components/ui/PreviewHotelCard/PreviewHotelCard";
+import React from "react";
+const montserrat = Montserrat({
+    subsets: ["latin"],
+    weight: ["300", "500", "700"]
 });
 
 export const metadata: Metadata = {
@@ -23,9 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="fr" suppressHydrationWarning>
+      <body className={montserrat.className}>
+        <Provider>
+            <Header/>
+            <Flex mt={6} justify="center" className="h-100">
+                <Container maxW="6xl" className="h-100" bg="white" py="12" px="6">
+                    {children}
+                </Container>
+            </Flex>
+
+        </Provider>
       </body>
     </html>
   );
