@@ -22,6 +22,7 @@ class ClientApi
                 return response
             },
             (error) => {
+                console.log(error)
                 toaster.create({
                     title: "Oups",
                     description: error.response.data.message,
