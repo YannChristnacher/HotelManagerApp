@@ -3,19 +3,27 @@
 namespace App\Http\Actions;
 
 use App\Http\Actions\Dtos\HotelAllActionResponse;
+use App\Http\Filters\HotelSearchFilter;
 use App\Http\Resources\HotelPreviewResource;
 use App\Models\Hotel;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class HotelAllAction
 {
     public static function execute(): HotelAllActionResponse
     {
-        $perPage = request()->query('per_page', 15);
+        $perPage = request()->query('per_page', 5);
         $paginator = QueryBuilder::for(Hotel::class)
             ->with("pictures")
-            ->allowedFilters(['name', 'city', 'country'])
-            ->allowedSorts(['name', 'city', 'country'])
+            ->allowedFilters([
+                'name',
+                'city',
+                'country',
+                AllowedFilter::custom('search', new HotelSearchFilter),
+            ])
+
+            ->allowedSorts(['name', "city", 'price_per_night'])
             ->paginate($perPage)
             ->appends(request()->query());
 

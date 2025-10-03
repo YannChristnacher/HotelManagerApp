@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -27,6 +28,9 @@ use Illuminate\Support\Collection;
  *
  * - Relations
  * @property Collection<Picture> $pictures
+ *
+ * -Accesors
+ * @property-read  string $shortDescription
  */
 class Hotel extends Model
 {
@@ -57,5 +61,15 @@ class Hotel extends Model
     public function pictures(): MorphMany
     {
         return $this->morphMany(Picture::class, 'model');
+    }
+
+    /**
+     * Accesors
+     */
+    protected function shortDescription(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => str()->limit($this->description, 50)
+        );
     }
 }

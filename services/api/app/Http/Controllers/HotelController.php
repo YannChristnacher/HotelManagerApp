@@ -9,12 +9,9 @@ use App\Http\Actions\HotelDetailAction;
 use App\Http\Actions\HotelUpdateAction;
 use App\Http\Requests\CreateHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
-use App\Http\Resources\HotelDetailResource;
-use App\Http\Resources\HotelPreviewResource;
 use App\Http\Responses\PaginateResponse;
 use App\Http\Responses\SingleResponse;
 use App\Models\Hotel;
-use Spatie\QueryBuilder\QueryBuilder;
 
 class HotelController extends Controller
 {
@@ -50,7 +47,7 @@ class HotelController extends Controller
     public function delete(Hotel $hotel){
         $response = new SingleResponse();
         return $response
-            ->setMessage("Suppresion de l'hotel : " . $hotel->id)
+            ->setMessage("Suppresion de l'hotel : " . $hotel->name)
             ->setData(HotelDeleteAction::execute($hotel));
     }
 }

@@ -15,6 +15,8 @@ class HotelPreviewResource extends JsonResource
         return [
             'id' => $this->resource->id,
             'name' => $this->resource->name,
+            'short_description' => $this->resource->shortDescription,
+            "max_capacity" => $this->resource->max_capacity,
             'picture' => $this->resource->pictures->first()
         ];
     }
