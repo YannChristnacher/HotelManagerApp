@@ -3,8 +3,8 @@ import { Montserrat } from "next/font/google";
 import "../css/globals.css";
 import { Provider } from "@/components/ui/provider"
 import Header from "@/components/layout/Header";
-import {Container, Flex, Grid} from "@chakra-ui/react";
-import PreviewHotelCard from "@/components/ui/PreviewHotelCard/PreviewHotelCard";
+import {Container, Flex} from "@chakra-ui/react";
+import { Toaster } from "@/components/ui/toaster"
 import React from "react";
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body className={montserrat.className}>
         <Provider>
+            <Toaster />
             <Header/>
             <Flex mt={6} justify="center" className="h-100">
                 <Container maxW="6xl" className="h-100" bg="white" py="12" px="6">
