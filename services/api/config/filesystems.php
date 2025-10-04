@@ -50,11 +50,21 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID', 'minio'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY', 'minio123'),
-            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
-            'bucket' => env('AWS_BUCKET', 'photos'),
-            'endpoint' => env('AWS_ENDPOINT', 'http://localhost:9000'),
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'endpoint' => env('AWS_ENDPOINT'),           // endpoint interne pour Laravel
+            'use_path_style_endpoint' => true,
+        ],
+
+        's3_public' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'endpoint' => env('AWS_PUBLIC_URL'),        // endpoint accessible par le front
             'use_path_style_endpoint' => true,
         ],
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Hotel;
 use App\Models\Picture;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {

@@ -32,9 +32,10 @@ class PictureFactory extends Factory
             $filesize = strlen($fileContent);
 
             Storage::disk('s3')->put($filename, $fileContent);
+            $url = Storage::disk('s3')->url($filename);
 
             return [
-                'filepath' => Storage::disk('s3')->url($filename),
+                'filepath' => $url,
                 'filesize' => $filesize,
             ];
         }
