@@ -76,18 +76,21 @@ class UpdateHotelRequestOutput
 
     public function toArray(): array
     {
-        return [
-            'name' => $this->name,
-            'address1' => $this->address1,
-            'address2' => $this->address2,
-            'zipcode' => $this->zipcode,
-            'city' => $this->city,
-            'country' => $this->country,
-            'lat' => $this->lat,
-            'lng' => $this->lng,
-            'description' => $this->description,
-            'max_capacity' => $this->max_capacity,
-            'price_per_night' => $this->price_per_night,
-        ];
+        $data = [];
+
+        if($this->getName())$data["name"] = $this->getName();
+        if($this->getAddress1())$data["address1"] = $this->getAddress1();
+        if($this->getZipcode())$data["zipcode"] = $this->getZipcode();
+        if($this->getCity())$data["city"] = $this->getCity();
+        if($this->getCountry())$data["country"] = $this->getCountry();
+        if($this->getLat())$data["lat"] = $this->getLat();
+        if($this->getLng())$data["lng"] = $this->getLng();
+        if($this->getDescription())$data["description"] = $this->getDescription();
+        if($this->getMaxCapacity())$data["max_capacity"] = $this->getMaxCapacity();
+        if($this->getPricePerNight())$data["price_per_night"] = $this->getPricePerNight();
+
+        $data["address2"] = $this->getAddress2();
+
+        return $data;
     }
 }

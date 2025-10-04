@@ -13,6 +13,7 @@ class HotelDetailResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->resource->id,
             'name' => $this->resource->name,
             'address1' => $this->resource->address1,
             'address2' => $this->resource->address2 ?? null,
@@ -24,7 +25,8 @@ class HotelDetailResource extends JsonResource
             'description' => $this->resource->description,
             'max_capacity' => $this->resource->max_capacity,
             'price_per_night' => $this->resource->price_per_night,
-            'pictures' => $this->resource->pictures
+            'pictures' => $this->resource->pictures,
+            'created_at' => $this->resource->created_at->format('d/m/Y'),
         ];
     }
 }

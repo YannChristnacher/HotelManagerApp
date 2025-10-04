@@ -30,7 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
             $response = new SingleResponse();
             return $response
                 ->setStatus(false)
-                ->setCode(500)
+                ->setCode(400)
                 ->setData($exception->errors())
                 ->setMessage("La Validation du formulaire à échoué");
         });
