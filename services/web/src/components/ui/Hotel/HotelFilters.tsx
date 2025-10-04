@@ -1,7 +1,5 @@
 import {NativeSelect, Input,Flex, InputGroup} from "@chakra-ui/react"
-import {IHotelFilter} from "@/models/IHotelFilter";
-import React, {useEffect, useState} from "react";
-import {DefaultHotelFilter} from "@/lib/DefaultHotelFilter";
+import React from "react";
 import {LuSearch} from "react-icons/lu";
 
 interface IProps

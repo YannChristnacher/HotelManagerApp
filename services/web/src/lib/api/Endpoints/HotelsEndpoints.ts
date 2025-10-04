@@ -3,6 +3,7 @@ import {IPaginatedApiResponse} from "@/models/IPaginatedApiResponse";
 import {IPreviewHotel} from "@/models/IPreviewHotel";
 import {AxiosResponse} from "axios";
 import {ISingleApiResponse} from "@/models/ISingleApiResponse";
+import {IHotel} from "@/models/IHotel";
 
 export default class HotelsEndpoints
 {
@@ -25,6 +26,16 @@ export default class HotelsEndpoints
     public async delete(id: number): Promise<AxiosResponse<ISingleApiResponse<boolean>>>
     {
         return await this.client.request().delete("/hotels/" + id)
+    }
+
+    public async read(id: number): Promise<AxiosResponse<ISingleApiResponse<IHotel>>>
+    {
+        return await this.client.request().get("/hotels/" + id)
+    }
+
+    public async update(id: number, data: any): Promise<AxiosResponse<ISingleApiResponse<IHotel>>>
+    {
+        return await this.client.request().put("/hotels/" + id, data)
     }
 }
 

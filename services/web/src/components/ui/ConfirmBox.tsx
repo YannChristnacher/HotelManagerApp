@@ -18,7 +18,6 @@ export default function ConfirmBox({message, title = "Confirmer l'opération", o
     {
         setIsLoading(true)
         const result = await onYes();
-        console.log(result)
         if (result) setIsOpen(false);
         setIsLoading(false)
     }

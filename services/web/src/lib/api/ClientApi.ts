@@ -28,6 +28,7 @@ class ClientApi
                     description: error.response.data.message,
                     type: "error"
                 })
+                return Promise.reject(error);
             }
         )
 
