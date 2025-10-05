@@ -8,7 +8,7 @@ import useHotelForm from "@/lib/hooks/UseHotelForm";
 
 export default function page()
 {
-    const {values, setValues, errors} = useHotelForm()
+    const {values, setValues, errors, isLoading, sendCreate} = useHotelForm()
     return (
         <div>
             <Box mb="14" background="white" borderRadius="md" px="4" py="8">
@@ -25,7 +25,7 @@ export default function page()
                 />
 
                 <Flex mt={4} justifyContent={"end"}>
-                    <Button>Sauvegarder</Button>
+                    <Button disabled={isLoading} onClick={() => sendCreate()}>Sauvegarder</Button>
                 </Flex>
             </Box>
 

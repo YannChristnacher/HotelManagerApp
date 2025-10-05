@@ -14,8 +14,7 @@ class CreateHotelRequestOutput
         protected string $lng,
         protected string $description,
         protected int $max_capacity,
-        protected float $price_per_night,
-        protected array $pictures
+        protected float $price_per_night
     )
     {}
 
@@ -74,10 +73,6 @@ class CreateHotelRequestOutput
         return $this->price_per_night;
     }
 
-    public function getPictures(): array
-    {
-        return $this->pictures;
-    }
 
     public function toArray(): array
     {
@@ -92,8 +87,7 @@ class CreateHotelRequestOutput
             'lng' => $this->lng,
             'description' => $this->description,
             'max_capacity' => $this->max_capacity,
-            'price_per_night' => $this->price_per_night,
-            'pictures' => $this->pictures
+            'price_per_night' => $this->price_per_night
         ];
     }
 }

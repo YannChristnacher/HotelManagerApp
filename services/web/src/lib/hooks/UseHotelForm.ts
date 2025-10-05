@@ -9,6 +9,7 @@ export default function useHotelForm(hotel: IHotel|null = null)
 {
     const [values, setValues] = useState<IFormHotel>(DefaultHotel)
     const [errors, setErrors] = useState<any>()
+    const [isLoading, setIsLoading] = useState<any>()
 
     useEffect(() => {
         mapHotelToForm(hotel)
@@ -101,12 +102,37 @@ export default function useHotelForm(hotel: IHotel|null = null)
 
     }
 
+    const sendCreate = () => {
+        setErrors({})
+        setIsLoading(true)
+        ClientApi
+            .hotelEndpoints()
+            .create(mapBodyPost())
+            .then((res) => {
+                toaster.create({
+                    title: "Opération réussi !",
+                    description: res.data.message,
+                    type: "success"
+                })
+                setIsLoading(false)
+            })
+            .catch((e) => {
+                if (e.status && e.status == 400 && e.response && e.response.data.data) {
+                    setErrors(e.response.data.data)
+                }
+                setIsLoading(false)
+            })
+            .finally(() => setIsLoading(false))
+    }
+
     return {
         values,
         setValues,
         sendEdit,
         errors,
         mapFormToHotel,
-        mapHotelToForm
+        mapHotelToForm,
+        isLoading,
+        sendCreate
     }
 }

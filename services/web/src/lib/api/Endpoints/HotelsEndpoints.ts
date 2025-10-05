@@ -37,5 +37,10 @@ export default class HotelsEndpoints
     {
         return await this.client.request().put("/hotels/" + id, data)
     }
+
+    public async create(data: any): Promise<AxiosResponse<ISingleApiResponse<IPreviewHotel>>>
+    {
+        return await this.client.request().post("/hotels", data)
+    }
 }
 
