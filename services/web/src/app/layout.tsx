@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "../css/globals.css";
+import "@/css/globals.scss";
 import { Provider } from "@/components/ui/provider"
 import Header from "@/components/layout/Header";
 import {Container, Flex} from "@chakra-ui/react";

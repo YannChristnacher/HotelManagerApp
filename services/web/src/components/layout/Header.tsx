@@ -3,6 +3,9 @@ import AppName from "@/components/layout/AppName";
 import MenuItem from "@/components/layout/MenuItem";
 import {Box, Container, Flex, Spacer} from "@chakra-ui/react"
 
+/**
+ * Wrapper for the header (menu item + app name)
+ */
 export default function Header()
 {
     return (
@@ -12,8 +15,8 @@ export default function Header()
                     <Flex height="100%">
                         <AppName/>
                         <Spacer/>
-                        <MenuItem label="Mes logements"/>
-                        <MenuItem label="Créer un logement"/>
+                        <MenuItem label="Mes logements" to={"/hotels"}/>
+                        <MenuItem label="Créer un logement" to={"/hotels/new"}/>
                     </Flex>
                 </Container>
             </Flex>

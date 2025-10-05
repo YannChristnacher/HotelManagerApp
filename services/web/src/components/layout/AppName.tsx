@@ -1,4 +1,8 @@
 import styles from "@/css/layout.module.scss"
+
+/**
+ * Component for displayed App name in the header
+ */
 export default function AppName()
 {
     return (
