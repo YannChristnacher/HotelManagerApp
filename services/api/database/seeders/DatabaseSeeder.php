@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
         $hotels = Hotel::factory(10)->create();
 
         $hotels->each(function (Hotel $hotel) {
-            $rand = rand(1, 4);
-            for ($i = 0 ; $i < $rand ; $i++ ) {
+            for ($i = 0 ; $i < 4 ; $i++ ) {
                 Picture::factory()
                     ->forModel($hotel)
                     ->forPosition($i)

@@ -1,7 +1,7 @@
 import {IHotel} from "@/models/IHotel";
 import {PhotoProvider, PhotoView} from "react-photo-view";
 import 'react-photo-view/dist/react-photo-view.css';
-import {For, Grid, Image} from "@chakra-ui/react";
+import {Flex, For, Grid, Image, Text} from "@chakra-ui/react";
 import {IPicture} from "@/models/IPicture";
 import React from "react";
 interface IProps
@@ -19,11 +19,13 @@ export default function HotelGallery({hotel}: IProps)
                 >
                     {(item, index) => (
                         <PhotoView src={item.filepath} key={item.id}>
-                            <Image height={"200px"} src={item.filepath}/>
+                            <Image height={"200px"} src={item.public_url}/>
                         </PhotoView> as React.ReactNode
                     )}
                 </For>
+
             </Grid>
+            {hotel.pictures.length == 0 ? <Flex mt={4} w={"100%"} justifyContent={"center"}><Text>Pas de photo enregistré</Text></Flex>: null}
         </PhotoProvider>
     );
 }

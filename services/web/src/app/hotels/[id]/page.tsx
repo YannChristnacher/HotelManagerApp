@@ -10,6 +10,7 @@ import HotelInformationBlock from "@/components/ui/Hotel/HotelInformationBlock";
 import HotelGallery from "@/components/ui/Hotel/HotelGallery";
 import HotelEditModal from "@/components/ui/Hotel/HotelEditModal";
 import HotelInformationSkeleton from "@/components/ui/Hotel/HotelInformationSkeleton";
+import HotelGalleryModal from "@/components/ui/Hotel/HotelGalleryModal";
 
 interface IProps {
     id: Promise<{ id: string }>
@@ -54,9 +55,14 @@ export default function page({params}: IProps)
                 <Flex width={"100%"}>
                     <Text textStyle="2xl">Photos</Text>
                     <Box marginStart="auto">
-                        <IconButton  disable={isLoading}>
-                            <LuPen />
-                        </IconButton>
+                        <HotelGalleryModal
+                            hotel={hotel}
+                            setHotel={setHotel}
+                        >
+                            <IconButton  disable={isLoading}>
+                                <LuPen />
+                            </IconButton>
+                        </HotelGalleryModal>
                     </Box>
                 </Flex>
 

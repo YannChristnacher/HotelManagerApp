@@ -15,7 +15,9 @@ class HotelAllAction
     {
         $perPage = request()->query('per_page', 5);
         $paginator = QueryBuilder::for(Hotel::class)
-            ->with("pictures")
+            ->with(['pictures' => function ($query) {
+                $query->orderBy('position', 'asc');
+            }])
             ->allowedFilters([
                 'name',
                 'city',

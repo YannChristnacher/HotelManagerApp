@@ -62,7 +62,7 @@ export default function HotelEditModal({children, hotel, setHotel}: IProps)
                             <Dialog.ActionTrigger asChild>
                                 <Button variant="outline">Annuler</Button>
                             </Dialog.ActionTrigger>
-                            <Button colorPalette="red" loading={isLoading} onClick={handleConfirm}>Valider</Button>
+                            <Button loading={isLoading} onClick={handleConfirm}>Valider</Button>
                         </Dialog.Footer>
                         <Dialog.CloseTrigger asChild>
                             <CloseButton size="sm" />

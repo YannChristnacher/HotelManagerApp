@@ -6,11 +6,10 @@ use App\Http\Resources\PictureResource;
 use App\Models\Picture;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class PictureStoreAction
+class PictureCreateAction
 {
     public static function execute( UploadedFile $file, Model $model, int $position):PictureResource
     {
@@ -18,8 +17,7 @@ class PictureStoreAction
 
         $filesize = $file->getSize();
 
-        //$filename = "pictures/" . Str::uuid() . "." . $file->getClientOriginalExtension();
-        $filename = "pictures/" . "test_" . $position . "." . $file->getClientOriginalExtension();
+        $filename = "pictures/" . Str::uuid() . "." . $file->getClientOriginalExtension();
         $isSaved =Storage::disk('s3_public')->put($filename, file_get_contents($file));
         if(!$isSaved) throw new \Exception("Impossible d'enregistrer l'image");
 
@@ -29,7 +27,8 @@ class PictureStoreAction
         $element = Picture::create([
             'model_id' => $model->id,
             'model_type'=> $model::class,
-            'filepath' => $publicUrl,
+            'filepath' => $filename,
+            'public_url' => $publicUrl,
             'filesize' => $filesize,
             'position' => $position
         ]);

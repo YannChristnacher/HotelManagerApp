@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property string $model_type
  * @property int $model_id
  * @property string $filepath
+ * @property string $public_url
  * @property int $filesize
  * @property int $position
  *
@@ -31,6 +32,7 @@ class Picture extends Model
         'model_type',
         'model_id',
         'filepath',
+        'public_url',
         'filesize',
         'position'
     ];

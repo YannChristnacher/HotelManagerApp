@@ -9,11 +9,7 @@ Route::prefix('hotels/{forHotel}/pictures')
 
         Route::post("", [PictureController::class, 'store'])->name('create');
 
-        Route::put("{id}", function () {
-            return ['message' => 'pictures.edit'];
-        })->where('id', '[0-9]+')->name('edit');
+        Route::put("/update-positions", [PictureController::class, 'updatePositions'])->where('id', '[0-9]+')->name('edit.position');
 
-        Route::delete("{id}", function () {
-            return ['message' => 'pictures.delete'];
-        })->where('id', '[0-9]+')->name('delete');
+        Route::delete("{picture}", [PictureController::class, 'delete'])->where('id', '[0-9]+')->name('delete');
     });

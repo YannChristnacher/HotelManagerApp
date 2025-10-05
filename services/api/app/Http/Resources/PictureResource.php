@@ -16,6 +16,7 @@ class PictureResource extends JsonResource
             'id' => $this->resource->id,
             'model_type' => $this->resource->model_type,
             'model_id' => $this->resource->model_id,
+            "public_url" => $this->resource->public_url,
             "filepath" => $this->resource->filepath,
             'filesize' => $this->resource->filesize,
             'position' => $this->resource->position,
