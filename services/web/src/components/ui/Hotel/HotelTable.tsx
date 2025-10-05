@@ -11,6 +11,7 @@ import {DefaultHotelFilter} from "@/lib/DefaultHotelFilter";
 import HotelFilters from "@/components/ui/Hotel/HotelFilters";
 import ConfirmBox from "@/components/ui/ConfirmBox";
 import useDeleteHotel from "@/lib/hooks/UseDeleteHotel";
+import Link from "next/link";
 
 interface IProps {
     hotels: Array<IPreviewHotel>,
@@ -42,7 +43,7 @@ export default function HotelTable({hotels, links, meta, fetch}: IProps)
                     {hotels.map((item) => (
                         <Table.Row key={item.id}>
                             <Table.Cell>
-                                <Image height="150px" src={item.picture.filepath}/>
+                                <Image height="150px" src={item.picture?.public_url ?? "https://openplaceholder.com/800x600"}/>
                             </Table.Cell>
                             <Table.Cell>{item.name}</Table.Cell>
                             <Table.Cell >{item.short_description}</Table.Cell>
@@ -61,9 +62,11 @@ export default function HotelTable({hotels, links, meta, fetch}: IProps)
                                     </Tooltip>
 
                                     <Tooltip content="Voir le détail">
-                                        <IconButton>
-                                            <LuChevronRight />
-                                        </IconButton>
+                                        <Link href={"/hotels/" + item.id}>
+                                            <IconButton>
+                                                <LuChevronRight />
+                                            </IconButton>
+                                        </Link>
                                     </Tooltip>
                                 </ButtonGroup>
                             </Table.Cell>

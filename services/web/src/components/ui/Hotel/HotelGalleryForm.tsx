@@ -35,8 +35,8 @@ export default function HotelGalleryForm({hotel, setHotel}: IProps)
                             <LuUpload />
                         </Icon>
                         <FileUpload.DropzoneContent>
-                            <Box>Drag and drop files here</Box>
-                            <Box color="fg.muted">.png, .jpg up to 5MB</Box>
+                            <Box>Déposer votre image ici</Box>
+                            <Box color="fg.muted">.png, .jpg, .webp jusqu'à 5Mo</Box>
                         </FileUpload.DropzoneContent>
                     </FileUpload.Dropzone>
                 </FileUpload.Root>

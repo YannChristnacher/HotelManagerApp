@@ -11,6 +11,7 @@ import HotelGallery from "@/components/ui/Hotel/HotelGallery";
 import HotelEditModal from "@/components/ui/Hotel/HotelEditModal";
 import HotelInformationSkeleton from "@/components/ui/Hotel/HotelInformationSkeleton";
 import HotelGalleryModal from "@/components/ui/Hotel/HotelGalleryModal";
+import Link from "next/link";
 
 interface IProps {
     id: Promise<{ id: string }>
@@ -22,9 +23,11 @@ export default function page({params}: IProps)
     return (
         <div>
             <Box mb="14" background="white" borderRadius="md" px="4" py="8">
-                <Button mb={4} variant="solid">
-                    <LuChevronLeft /> Retour
-                </Button>
+                <Link href={"/hotels"}>
+                    <Button mb={4} variant="solid">
+                        <LuChevronLeft /> Retour
+                    </Button>
+                </Link>
                 {isLoading ? <Skeleton height="5" /> : <Text textStyle="3xl">Détail de l'herbergement : { hotel.name }</Text> }
                 <Text  color="gray.500" fontWeight="light"  textStyle="md">Vous pouvez sur cet écran voir toutes les données de l'établissement et les modifiés</Text>
             </Box>
