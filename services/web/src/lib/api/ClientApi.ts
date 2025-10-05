@@ -5,7 +5,7 @@ import {PictureEndpoints} from "@/lib/api/Endpoints/PictureEndpoints";
 
 class ClientApi
 {
-    private baseUrl: string ="http://localhost:8000/api/v1"
+    private baseUrl: string = process.env.NEXT_PUBLIC_API_URL
     private timeout: number = 10000
 
     public request(): AxiosInstance

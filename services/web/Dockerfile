@@ -3,16 +3,15 @@ FROM node:22
 # Crée un dossier de travail
 WORKDIR /app
 
-# Copier uniquement les fichiers de dépendances pour optimiser le cache
-COPY package*.json ./
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
-# Installer les dépendances
+
+COPY package*.json ./
 RUN npm install
 
-# Copier le reste du projet
 COPY . .
 
-# Exposer le port Next (3000 par défaut)
 EXPOSE 3000
 
 # Lancer le serveur de développement Next

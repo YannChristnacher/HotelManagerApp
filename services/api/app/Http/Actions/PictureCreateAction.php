@@ -22,13 +22,12 @@ class PictureCreateAction
         if(!$isSaved) throw new \Exception("Impossible d'enregistrer l'image");
 
         $url = Storage::disk('s3_public')->url($filename);
-        $publicUrl = str_replace(env('AWS_PUBLIC_URL'), env('AWS_ENDPOINT'), $url);
 
         $element = Picture::create([
             'model_id' => $model->id,
             'model_type'=> $model::class,
             'filepath' => $filename,
-            'public_url' => $publicUrl,
+            'public_url' => $url,
             'filesize' => $filesize,
             'position' => $position
         ]);

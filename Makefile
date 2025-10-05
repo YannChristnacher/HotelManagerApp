@@ -1,14 +1,18 @@
-up:
-	docker compose up --build
+
+initDevEnv:
+	cp .env.dev .env
+
+initDemoEnv:
+	cp .env.demo .env
+
+build:
+	docker compose  build
+
+start:
+	docker compose up -d
+
+resetDb:
+	docker compose exec laravel php artisan migrate:fresh --seed
 
 down:
-	docker compose down --remove-orphans
-
-install-back:
-	cd services/api && composer install
-
-install-front:
-	cd services/web && npm install
-
-migrate:
-	docker compose exec api php artisan migrate
+	docker compose down
