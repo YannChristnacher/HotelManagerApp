@@ -56,6 +56,17 @@ Concernant le back j'ai essayé de respecter les principes suivants :
 - Projet scallable
 - Stockage séparé dans un S3
 
+J'évite aussi d'écrire trop de commentaire, je ne trouve pas forcément ça pertinent et ça m'oblige à mieux nommer mes éléments.
+
+TS est pour moi indispensable maintenant quand je fais du front. je trouve que ça aide beaucoup au dev et évite pas mal d'erreur
+J'ai également choisi de ne pas travailler avec un store. La taille de l'application ne justifiait pas selon moi son utilisation par rapport au danger que ça peut apporter (flou dans l'information, difficulté à retrouver le cheminement des datas, etc)
+
+J'ai fais le choix de ne pas faire de tests car :
+- Côté front je pense que TS évite déjà pas mal d'erreur pou une application de cette taille
+- Côté back je prefère attendre / retour utilisateur pour identifier les points sensibles et concentrer les tests là dessus
+
+
+
 ### Temps passé
 J'y ai consacré à peu près 3 jours complet de travail
 
@@ -66,6 +77,9 @@ Côté back :
 - Redis pour un système de cache
 - Des logs afin de tracer des éventuelles soucis ainsi que pour avoir des metrics sur l'utilisation du produit
 - Faire un peu plus de nettoyage de l'installation standard de Laravel :)
+- Tests sur les points sensibles
+- Terminer mon package et l'utiliser pour permettre de transformer les classes php (Models, Dto) en interface TS. Ca permetterai de tenir à jour plus facilement les interfaces correspondantes
+
 
 Côté front : 
 - Améliorer l'expérience utilisateur comme des transition entre les pages, des animations sur le dom lors d'évènement (comme quand on supprime une photo ou qu'on change l'ordre des photos)
