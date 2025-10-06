@@ -4,12 +4,11 @@ services:
     env_file: .env
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
-      MYSQL_USER: "${DB_USERNAME}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
     ports:
       - "3306:3306"
     volumes:
-      - db-data:/var/lib/mysql
+      - db-data-mysql:/var/lib/mysql
 
   laravel:
     build:
@@ -81,5 +80,5 @@ services:
       - laravel
 
 volumes:
-  db-data:
+  db-data-mysql:
   minio-data:

@@ -18,7 +18,7 @@ class PictureCreateAction
         $filesize = $file->getSize();
 
         $filename = "pictures/" . Str::uuid() . "." . $file->getClientOriginalExtension();
-        $isSaved =Storage::disk('s3_public')->put($filename, file_get_contents($file));
+        $isSaved =Storage::disk('s3')->put($filename, file_get_contents($file));
         if(!$isSaved) throw new \Exception("Impossible d'enregistrer l'image");
 
         $url = Storage::disk('s3_public')->url($filename);
