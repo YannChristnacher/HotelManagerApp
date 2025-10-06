@@ -39,6 +39,8 @@ make build
 make start
 
 // Réinitialise la base de données, lance les migrations et les seeders
+// /!\ Si la commmande est lancée directement après "make start" il est possible qu'elle n'arrive pas à se connecter à la bdd le temps que le service "db" se lance.
+// Il faut réessayer quelques secondes après
 make resetDb
 
 ```
